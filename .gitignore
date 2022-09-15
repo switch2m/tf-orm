@@ -1,0 +1,5 @@
+#ignore the cloud provider dependencie folder
+.terraform/*
+#ignore state files
+*.tfstate
+*.tfstate.*
