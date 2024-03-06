@@ -40,13 +40,7 @@ stages:
           targetType: inline
           script: |
             echo "HELLO"
-
-  - job: WaitForValidation
-    displayName: "Wait for Approval to Create Account"
-    steps:
-      - task: ManualValidation@0
-        displayName: 'Manual Validation Step'
-        timeoutInMinutes: 30
+      - task: ManualIntervention@8
         inputs:
-          notifyUsers: 'zaki.spofy@gmail.com'
-          instructions: 'Please approve the account creation.'
+          instructions: 'please'
+          emailRecipients: 'zaki.spofy@gmail.com'
