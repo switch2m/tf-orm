@@ -40,7 +40,7 @@ stages:
           targetType: inline
           script: |
             echo "HELLO"
-      - task: ManualIntervention@8
+      - task: ManualIntervention@1
         inputs:
           instructions: 'please'
           emailRecipients: 'zaki.spofy@gmail.com'
