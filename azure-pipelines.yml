@@ -42,7 +42,6 @@ stages:
             echo "HELLO"
 
   - job: WaitForValidation
-    dependsOn: Retrieve_Token
     displayName: "Wait for Approval to Create Account"
     steps:
       - task: ManualValidation@0
