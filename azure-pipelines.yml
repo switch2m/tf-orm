@@ -50,4 +50,5 @@ stages:
       inputs:
         notifyUsers: |
           zaki.spofy@gmail.com
+          zack.fatouh@outlook.fr
         instructions: 'Please validate the build configuration and resume'
