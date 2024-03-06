@@ -1,0 +1,42 @@
+trigger: none
+pool:
+  vmImage: ubuntu-latest
+
+parameters:
+  - name: platform
+    displayName: 'Platform'
+    type: string
+    default: 'Aws'
+    values:
+      - Aws
+      - Azure
+
+  - name: validateOnly
+    type: boolean
+    default: true
+    displayName: 'Validate Only'
+
+  - name: accountName
+    type: string
+    default: 'ccottrell@deloitte.com'
+    displayName: 'Cloud account name or subscription name'
+
+  - name: requestorEmail
+    type: string
+    default: 'ccottrell@deloitte.com'
+    displayName: 'Requestor Email'
+
+stages:   
+- stage: Decommision_${{ parameters.platform }}_Account_${{ parameters.accountName }}
+  displayName: "Decommision_${{ parameters.platform }}_Account_${{ parameters.accountName }}"
+  jobs:
+  - job: Retrieve_Token
+    displayName: "Retrieve Cosmic Token"
+    steps:
+      - task: Bash@3
+        name: get_jwt_token
+        displayName: 'GET THE JWT TOKEN'
+        inputs:
+          targetType: inline
+          script: |
+            echo "HELLO"
