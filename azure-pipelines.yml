@@ -76,10 +76,17 @@ stages:
           notifyUsers: |
             zaki.spofy@gmail.com
             zack.fatouh@outlook.fr
-          instructions: >
-            Please validate the decommissioning of the account with the following details:\n
-            - Platform: ${{ parameters.platform }}\n
-            - Client Name: ${{ parameters.clientName }}\n
-            - Cloud Account Name: ${{ parameters.accountName }}\n
-            - Environment: ${{ parameters.environment }}\n
+          instructions: |
+            Please validate the decommissioning of the account with the following details:
+              - Platform: ${{ parameters.platform }}
+              - Client Name: ${{ parameters.clientName }}
+              - Cloud Account Name: ${{ parameters.accountName }}
+              - Environment: ${{ parameters.environment }}
             This action is irreversible. Proceed with caution.
+          # instructions: >
+          #   Please validate the decommissioning of the account with the following details:\n
+          #   - Platform: ${{ parameters.platform }}\n
+          #   - Client Name: ${{ parameters.clientName }}\n
+          #   - Cloud Account Name: ${{ parameters.accountName }}\n
+          #   - Environment: ${{ parameters.environment }}\n
+          #   This action is irreversible. Proceed with caution.
