@@ -16,7 +16,7 @@ parameters:
   - name: accountName
     displayName: 'Cloud Account Name'
     type: string
-    
+
   - name: environment
     displayName: 'Environment'
     type: string
@@ -50,6 +50,11 @@ stages:
             echo -e "${RED}Cloud Account Name: ${{ parameters.accountName }}${NO_COLOR}"
             echo -e "${RED}Environment: ${{ parameters.environment }}${NO_COLOR}"
 
+  - job: WaitForValidation
+    pool: server
+    displayName: Wait for approval to create account
+    timeoutInMinutes: 30
+    steps:
       - task: ManualValidation@0
         timeoutInMinutes: 22 # task times out in 1 day
         inputs:
