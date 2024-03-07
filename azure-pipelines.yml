@@ -1,6 +1,4 @@
 trigger: none
-pool:
-  vmImage: ubuntu-latest
 
 parameters:
   - name: platform
@@ -11,44 +9,51 @@ parameters:
       - Aws
       - Azure
 
-  - name: validateOnly
-    type: boolean
-    default: true
-    displayName: 'Validate Only'
+  - name: clientName
+    displayName: 'Client Name'
+    type: string
 
   - name: accountName
+    displayName: 'Cloud Account Name'
     type: string
-    default: 'ccottrell@deloitte.com'
-    displayName: 'Cloud account name or subscription name'
-
-  - name: requestorEmail
+    
+  - name: environment
+    displayName: 'Environment'
     type: string
-    default: 'ccottrell@deloitte.com'
-    displayName: 'Requestor Email'
+    default: 'NPD'
+    values:
+      - NPD
+      - PRD
 
-stages:   
-- stage: Decommision_${{ parameters.platform }}_Account_${{ parameters.accountName }}
-  displayName: "Decommision_${{ parameters.platform }}_Account_${{ parameters.accountName }}"
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: DecommissionAccount
+  displayName: "Decommission Account"
   jobs:
-  - job: Retrieve_Token
-    displayName: "Retrieve Cosmic Token"
+  - job: DisplayAccountInfo
+    displayName: "Display Account Decommissioning Info"
     steps:
       - task: Bash@3
-        name: get_jwt_token
-        displayName: 'GET THE JWT TOKEN'
         inputs:
-          targetType: inline
+          targetType: 'inline'
           script: |
-            echo "HELLO"
-  - job: waitForValidation
-    displayName: Wait for external validation
-    pool: server
-    timeoutInMinutes: 4320 # job times out in 3 days
-    steps:
-    - task: ManualValidation@0
-      timeoutInMinutes: 22 # task times out in 1 day
-      inputs:
-        notifyUsers: |
-          zaki.spofy@gmail.com
-          zack.fatouh@outlook.fr
-        instructions: "Please validate the Decommision of the ${{ parameters.platform }} Account: ${{ parameters.accountName }}"
+            # Set the text color to red
+            RED='\033[31m'
+            # Reset the text color to default
+            NO_COLOR='\033[0m'
+
+            echo -e "${RED}Decommissioning Account Information:${NO_COLOR}"
+            echo -e "${RED}Platform: ${{ parameters.platform }}${NO_COLOR}"
+            echo -e "${RED}Client Name: ${{ parameters.clientName }}${NO_COLOR}"
+            echo -e "${RED}Cloud Account Name: ${{ parameters.accountName }}${NO_COLOR}"
+            echo -e "${RED}Environment: ${{ parameters.environment }}${NO_COLOR}"
+
+      - task: ManualValidation@0
+        timeoutInMinutes: 22 # task times out in 1 day
+        inputs:
+          notifyUsers: |
+            zaki.spofy@gmail.com
+            zack.fatouh@outlook.fr
+          instructions: "Please validate the Decommision of the ${{ parameters.platform }} Account: ${{ parameters.accountName }}"
