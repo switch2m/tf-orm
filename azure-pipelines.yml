@@ -175,6 +175,7 @@ stages:
     - job: WaitForValidation
       variables:
         clientName: $[ dependencies.Display_Decommisioning_Accout_details.outputs['get_account_details.clientName'] ]
+        envIdentifier: $[ dependencies.Display_Decommisioning_Accout_details.outputs['get_account_details.envIdentifier'] ]
       dependsOn: 
         - Decommissioning_Request_Body
       # condition: eq(parameters.validateOnly, 'false')
@@ -192,7 +193,7 @@ stages:
                 - Platform: ${{ parameters.platform }}
                 - Client Name: $clientName
                 - Cloud Account Name: ${{ parameters.accountName }}
-                - Environment: ${{ parameters.environment }}
+                - Environment: $envIdentifier
               This action is irreversible. Proceed with caution.
 
     - job: Wait_for_request_completion
@@ -261,7 +262,6 @@ stages:
                   fi
                 fi
               done
-          displayName: 'Post Cosmic Deletion Request'
 
   - stage: Decommision_${{ parameters.platform }}_Subscription
     condition: eq('${{ parameters.platform }}', 'Azure')
@@ -411,6 +411,7 @@ stages:
     - job: WaitForValidation
       variables:
         clientName: $[ dependencies.Display_Decommisioning_Accout_details.outputs['get_account_details.clientName'] ]
+        envIdentifier: $[ dependencies.Display_Decommisioning_Accout_details.outputs['get_account_details.envIdentifier'] ]
       dependsOn: 
         - Decommissioning_Request_Body
       # condition: eq(parameters.validateOnly, 'false')
@@ -428,7 +429,7 @@ stages:
                 - Platform: ${{ parameters.platform }}
                 - Client Name: $clientName
                 - Cloud Account Name: ${{ parameters.accountName }}
-                - Environment: ${{ parameters.environment }}
+                - Environment: $envIdentifier
               This action is irreversible. Proceed with caution.
 
     - job: Wait_for_request_completion
@@ -497,4 +498,3 @@ stages:
                   fi
                 fi
               done
-          displayName: 'Post Cosmic Deletion Request'  
