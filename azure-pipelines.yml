@@ -39,16 +39,16 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
-            # Set the text color to red
-            RED='\033[31m'
-            # Reset the text color to default
+            # Set the text color to red and make it bold
+            RED_BOLD='\033[1m\033[31m'
+            # Reset the text color and formatting to default
             NO_COLOR='\033[0m'
 
-            echo -e "${RED}Decommissioning Account Information:${NO_COLOR}"
-            echo -e "${RED}Platform: ${{ parameters.platform }}${NO_COLOR}"
-            echo -e "${RED}Client Name: ${{ parameters.clientName }}${NO_COLOR}"
-            echo -e "${RED}Cloud Account Name: ${{ parameters.accountName }}${NO_COLOR}"
-            echo -e "${RED}Environment: ${{ parameters.environment }}${NO_COLOR}"
+            echo -e "${RED_BOLD}Decommissioning Account Information:${NO_COLOR}"
+            echo -e "${RED_BOLD}Platform: ${{ parameters.platform }}${NO_COLOR}"
+            echo -e "${RED_BOLD}Client Name: ${{ parameters.clientName }}${NO_COLOR}"
+            echo -e "${RED_BOLD}Cloud Account Name: ${{ parameters.accountName }}${NO_COLOR}"
+            echo -e "${RED_BOLD}Environment: ${{ parameters.environment }}${NO_COLOR}"
 
   - job: WaitForValidation
     pool: server
