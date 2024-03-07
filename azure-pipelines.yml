@@ -59,7 +59,9 @@ stages:
             echo -e "Cloud Account Name: ${RED_BOLD}${{ parameters.accountName }}${NO_COLOR}"
             echo -e "Environment: ${RED_BOLD}${{ parameters.environment }}${NO_COLOR}"
             echo
+            echo "================================================"
             echo -e "\033[1;31m[CRITICAL WARNING]\033[0m This action is irreversible. Proceed with caution."
+            echo "================================================"
             echo
 
 
