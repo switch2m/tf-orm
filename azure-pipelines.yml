@@ -50,6 +50,13 @@ stages:
             echo -e "\033[1;31m[IMPORTANT]\033[0m Ensure you have backed up all necessary data before proceeding with decommissioning."
             echo "================================================"
             echo
+            echo -e "\033[1;31m"
+            echo " W     W   A   RRRR  N   N III N   N  GGG "
+            echo " W     W  A A  R   R NN  N  I  NN  N G   G"
+            echo " W  W  W AAAAA RRRR  N N N  I  N N N G    "
+            echo " W W W W A   A R  R  N  NN  I  N  NN G  GG"
+            echo "  W   W  A   A R   R N   N III N   N  GGG "
+            echo -e "\033[0m"
             # ASCII art for critical warning
             echo -e "\033[1;31m"
             echo "     __ __   ____  _       ___   _____ ______   ___    ____  ______"
