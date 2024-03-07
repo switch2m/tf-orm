@@ -39,34 +39,18 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
+            
+            echo
+            echo "================================================"
+            echo -e "\033[1;31m[IMPORTANT]\033[0m Ensure you have backed up all necessary data before proceeding with decommissioning."
+            echo "================================================"
+            echo
             echo -e "\033[1m\033[4mDecommissioning Account Information:\033[0m"
             echo
             echo -e "\033[1mPlatform:\033[0m ${platform}"
             echo -e "\033[1mClient Name:\033[0m ${clientName}"
             echo -e "\033[1mCloud Account Name:\033[0m ${accountName}"
             echo -e "\033[1mEnvironment:\033[0m ${environment}"
-            echo
-            echo "================================================"
-            echo -e "\033[1;31m[IMPORTANT]\033[0m Ensure you have backed up all necessary data before proceeding with decommissioning."
-            echo "================================================"
-            echo
-            echo -e "\033[1;31m"
-            echo " W     W   A   RRRR  N   N III N   N  GGG "
-            echo " W     W  A A  R   R NN  N  I  NN  N G   G"
-            echo " W  W  W AAAAA RRRR  N N N  I  N N N G    "
-            echo " W W W W A   A R  R  N  NN  I  N  NN G  GG"
-            echo "  W   W  A   A R   R N   N III N   N  GGG "
-            echo -e "\033[0m"
-            # ASCII art for critical warning
-            echo -e "\033[1;31m"
-            echo "     __ __   ____  _       ___   _____ ______   ___    ____  ______"
-            echo "    |  |  | /    || |     /   \ / ___/|      | /   \  |    ||      |"
-            echo "    |  |  ||  o  || |    |     (   \_ |      ||     |  |  | |      |"
-            echo "    |  _  ||     || |___ |  O  |\__  ||_|  |_||  O  |  |  | |_|  |_|"
-            echo "    |  |  ||  _  ||     ||     |/  \ |  |  |  |     |  |  |   |  |"
-            echo "    |  |  ||  |  ||     ||     |\    |  |  |  |     |  |  |   |  |"
-            echo "    |__|__||__|__||_____| \___/  \___|  |__|   \___/  |____|  |__|"
-            echo -e "\033[0m"
             echo
             echo -e "\033[1;31m[CRITICAL WARNING]\033[0m This action is irreversible. Proceed with caution."
             echo
