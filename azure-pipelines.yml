@@ -63,8 +63,6 @@ stages:
               zack.fatouh@outlook.fr
             instructions: |
               Please validate the decommissioning of the account with the following details:
-                - Cloud Account Name: ${{ variables.location }}
                 - Platform: ${location}
                 - Cloud Account Name: $(location)
-                - Cloud Account Name: $location
               This action is irreversible. Proceed with caution.
