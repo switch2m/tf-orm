@@ -45,3 +45,26 @@ stages:
 
         - script: |
               echo "$(get_jwt_token.location)"
+
+    - job: WaitForValidation
+      variables:
+        location: $[ dependencies.Retrieve_Token.outputs['get_jwt_token.location'] ]
+      dependsOn: 
+        - Retrieve_Token
+      # condition: eq(parameters.validateOnly, 'false')
+      pool: server
+      displayName: Wait for approval to create account
+      timeoutInMinutes: 45
+      steps:
+        - task: ManualValidation@0
+          timeoutInMinutes: 45 # task times out in 30 minutes
+          inputs:
+            notifyUsers: |
+              zack.fatouh@outlook.fr
+            instructions: |
+              Please validate the decommissioning of the account with the following details:
+                - Cloud Account Name: ${{ variables.location }}
+                - Platform: ${location}
+                - Cloud Account Name: $(location)
+                - Cloud Account Name: $location
+              This action is irreversible. Proceed with caution.
