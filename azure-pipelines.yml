@@ -48,10 +48,10 @@ stages:
               # Your existing script...
 
               # Set a variable with a value of parameter
-              dccAccount="${{ parameters.dccAccount }}"
+              dccAccount="${{ parameters.Account }}"
 
               # Check if the dccAccount variable is empty, then set it to false
-              if [ -z "$dccAccount" ]; then
+              if [ -z "$Account" ]; then
                   dccAccount=false
               fi
               echo "$dccAccount"
