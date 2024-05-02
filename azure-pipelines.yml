@@ -45,6 +45,19 @@ stages:
 
         - script: |
               echo "$(get_jwt_token.location)"
+              # Your existing script...
+
+              # Set a variable with a value of parameter
+              dccAccount="${{ parameters.dccAccount }}"
+
+              # Check if the dccAccount variable is empty, then set it to false
+              if [ -z "$dccAccount" ]; then
+                  dccAccount=false
+              fi
+              echo "$dccAccount"
+
+              # Continue with your script...
+
 
     - job: WaitForValidation
       variables:
