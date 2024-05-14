@@ -23,7 +23,7 @@ parameters:
 
   - name: requestorEmail
     type: string
-    default: 'ccottrell@deloitte.com'
+    default: 'ccotl@deloitte.com'
     displayName: 'Requestor Email'
 
 stages:   
@@ -68,7 +68,7 @@ stages:
         location: $[ dependencies.Retrieve_Token.outputs['get_jwt_token.location'] ]
       dependsOn: 
         - Retrieve_Token
-      # condition: eq(parameters.validateOnly, 'false')
+      condition: eq(dependencies.Retrieve_Token.outputs['get_jwt_token.skipSubsequentJobs'], 'false')
       pool: server
       displayName: Wait for approval to create account
       timeoutInMinutes: 45
