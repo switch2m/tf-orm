@@ -42,7 +42,8 @@ stages:
               location="virginia"
               echo "##vso[task.setvariable variable=jwt;]$location"
               echo "##vso[task.setvariable variable=location;isOutput=true;]$location"
-              echo "##vso[task.setvariable variable=skipAccessProvisionJob;isOutput=true]true"
+              echo "##vso[task.setvariable variable=skipAccessProvisionJob]true"
+              echo "##vso[task.setvariable variable=skipAccessProvisionJoba;isOutput=true;]true"
         - task: Bash@3
           name: display_token
           displayName: 'GET THE JWT TOKEN'
@@ -68,7 +69,7 @@ stages:
         location: $[ dependencies.Retrieve_Token.outputs['get_jwt_token.location'] ]
       dependsOn: 
         - Retrieve_Token
-      condition: eq(dependencies.Retrieve_Token.outputs['get_jwt_token.skipSubsequentJobs'], 'false')
+      condition: eq(dependencies.Retrieve_Token.outputs['get_jwt_token.skipAccessProvisionJoba'], 'false')
       pool: server
       displayName: Wait for approval to create account
       timeoutInMinutes: 45
