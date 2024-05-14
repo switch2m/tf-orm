@@ -42,19 +42,23 @@ stages:
               location="virginia"
               echo "##vso[task.setvariable variable=jwt;]$location"
               echo "##vso[task.setvariable variable=location;isOutput=true;]$location"
+              echo "##vso[task.setvariable variable=skipAccessProvisionJob;isOutput=true]true"
+        - task: Bash@3
+          name: display_token
+          displayName: 'GET THE JWT TOKEN'
+          condition: eq(variables['skipAccessProvisionJob'], false)
+          inputs:
+            targetType: inline
+            script: |
+              location="virginia"
+              echo "##vso[task.setvariable variable=jwt;]$location"
+              echo "##vso[task.setvariable variable=location;isOutput=true;]$location"
 
         - script: |
               echo "$(get_jwt_token.location)"
               # Your existing script...
-
-              # Set a variable with a value of parameter
-              dccAccount="${{ parameters.Account }}"
-
-              # Check if the dccAccount variable is empty, then set it to false
-              if [ -z "$Account" ]; then
-                  dccAccount=false
-              fi
-              echo "$dccAccount"
+          displayName: get tokens jwt
+          condition: eq(variables['skipAccessProvisionJob'], true)
 
               # Continue with your script...
 
