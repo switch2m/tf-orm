@@ -16,7 +16,7 @@ jobs:
 
       - name: Fetch main branch
         run: |
-          git fetch origin main:main
+          git fetch origin master:master
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
