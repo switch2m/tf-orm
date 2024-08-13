@@ -14,7 +14,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Fetch main branch
+      - name: Fetch master branch
         run: |
           git fetch origin master:master
 
@@ -23,8 +23,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: pizza-order-ui
-          base: main
-          title: 'Merge pizza-order-ui into main'
+          base: master
+          title: 'Merge pizza-order-ui into master'
           body: |
-            This PR was automatically created to merge changes from the pizza-order-ui branch into main.
+            This PR was automatically created to merge changes from the pizza-order-ui branch into master.
             Please review the changes and merge if appropriate.
