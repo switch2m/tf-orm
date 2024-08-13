@@ -1,0 +1,30 @@
+name: Auto PR from feature branch
+
+on:
+  push:
+    branches:
+      - 'pizza-order-ui'
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Fetch main branch
+        run: |
+          git fetch origin main:main
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: pizza-order-ui
+          base: main
+          title: 'Merge pizza-order-ui into main'
+          body: |
+            This PR was automatically created to merge changes from the pizza-order-ui branch into main.
+            Please review the changes and merge if appropriate.
